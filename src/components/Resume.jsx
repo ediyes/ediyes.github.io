@@ -1,76 +1,18 @@
 import React from "react";
 import resumeFile from "../documents/resume.pdf";
+import {
+  MY_EDUCATION,
+  RESUME,
+  SUMMARY,
+  EDUCATION_DETAIL,
+  MY_EXPERIENCE,
+  EXPERIENCE_DETAIL,
+  MY_SKILLS,
+  SKILLS_DETAIL,
+} from "../config/constants/constants.resume";
+import { ABOUT_CV_TEXT } from "../config/constants/constants.about";
 
 const Resume = ({ classicHeader, darkTheme }) => {
-  const educationDetails = [
-    {
-      yearRange: "2000 - 2004",
-      title: "Computer Science",
-      place: "International University",
-      desc: "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.",
-    },
-    {
-      yearRange: "2005 - 2008",
-      title: "Bachelor Degree",
-      place: "University of California",
-      desc: "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.",
-    },
-    {
-      yearRange: "2009 - 2012",
-      title: "Master Degree",
-      place: "Harvard University",
-      desc: "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.",
-    },
-  ];
-
-  const experienceDetails = [
-    {
-      yearRange: "2012 - 2013",
-      title: "Jr. UI UX Designer",
-      place: "Themeforest",
-      desc: "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.",
-    },
-    {
-      yearRange: "2014 - 2016",
-      title: "Jr. Product Designer",
-      place: "Dribbble",
-      desc: "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.",
-    },
-    {
-      yearRange: "2017 - 2019",
-      title: "Product Designer",
-      place: "Adobe",
-      desc: "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.",
-    },
-  ];
-
-  const skills = [
-    {
-      name: "Web Design",
-      percent: 65,
-    },
-    {
-      name: "HTML/CSS",
-      percent: 95,
-    },
-    {
-      name: "JavaScript",
-      percent: 80,
-    },
-    {
-      name: "React JS",
-      percent: 70,
-    },
-    {
-      name: "Angular Js",
-      percent: 60,
-    },
-    {
-      name: "Bootstrap",
-      percent: 99,
-    },
-  ];
-
   return (
     <section
       id="resume"
@@ -85,7 +27,7 @@ const Resume = ({ classicHeader, darkTheme }) => {
               (darkTheme ? "text-muted opacity-1" : "text-light opacity-4")
             }
           >
-            Summary
+            {SUMMARY}
           </h2>
           <p
             className={
@@ -93,8 +35,7 @@ const Resume = ({ classicHeader, darkTheme }) => {
               (darkTheme ? "text-white" : "text-dark")
             }
           >
-            {" "}
-            Resume
+            {RESUME}
             <span className="heading-separator-line border-bottom border-3 border-primary d-block mx-auto" />
           </p>
         </div>
@@ -107,10 +48,10 @@ const Resume = ({ classicHeader, darkTheme }) => {
                 "text-6 fw-600 mb-4 " + (darkTheme ? "text-white" : "")
               }
             >
-              My Education
+              {MY_EDUCATION}
             </h2>
-            {educationDetails.length > 0 &&
-              educationDetails.map((value, index) => (
+            {EDUCATION_DETAIL.length > 0 &&
+              EDUCATION_DETAIL.map((value, index) => (
                 <div
                   key={index}
                   className={
@@ -140,10 +81,10 @@ const Resume = ({ classicHeader, darkTheme }) => {
                 "text-6 fw-600 mb-4 " + (darkTheme ? "text-white" : "")
               }
             >
-              My Experience
+              {MY_EXPERIENCE}
             </h2>
-            {experienceDetails.length > 0 &&
-              experienceDetails.map((value, index) => (
+            {EXPERIENCE_DETAIL.length > 0 &&
+              EXPERIENCE_DETAIL.map((value, index) => (
                 <div
                   key={index}
                   className={
@@ -173,11 +114,11 @@ const Resume = ({ classicHeader, darkTheme }) => {
             "text-6 fw-600 mt-4 mb-4 " + (darkTheme ? "text-white" : "")
           }
         >
-          My Skills
+          {MY_SKILLS}
         </h2>
         <div className="row gx-5">
-          {skills.length > 0 &&
-            skills.map((skill, index) => (
+          {SKILLS_DETAIL.length > 0 &&
+            SKILLS_DETAIL.map((skill, index) => (
               <div key={index} className="col-md-6">
                 <p
                   className={
@@ -211,7 +152,7 @@ const Resume = ({ classicHeader, darkTheme }) => {
             href={resumeFile}
             download
           >
-            Download CV
+            {ABOUT_CV_TEXT}
             <span className="ms-1">
               <i className="fas fa-download" />
             </span>
