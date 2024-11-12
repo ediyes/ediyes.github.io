@@ -39,7 +39,6 @@ const Portfolio = ({ classicHeader, darkTheme }) => {
   }, [filterKey, imagesLoaded]);
 
   const handleFilterKeyChange = (key) => () => setFilterKey(key);
-  console.log(PROJECT_FILTERS);
   return (
     <>
       <section

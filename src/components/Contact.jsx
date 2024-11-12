@@ -4,6 +4,15 @@ import { ToastContainer, toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 import { Tooltip } from "./Tooltip";
+import {
+  ADDRESS,
+  ADDRESS_COMPANY,
+  CONTACT,
+  CONTACT_LIST,
+  FOLLOW_ME,
+  GET_TOUCH,
+} from "../config/constants/constants.contact";
+import { SOCIAL_LINKS } from "../config/constants/constants.sidebar";
 
 const Contact = ({ classicHeader, darkTheme }) => {
   const form = useRef();
@@ -52,6 +61,30 @@ const Contact = ({ classicHeader, darkTheme }) => {
       );
   };
 
+  const renderSocialLinks =
+    SOCIAL_LINKS &&
+    SOCIAL_LINKS.map((i) => (
+      <li className="social-icons-dribbble" key={i.id}>
+        <Tooltip text={i.id} placement="top">
+          <a href={i.link} target="_blank" rel="noopener noreferrer">
+            <i className={i.iconClass} />
+          </a>
+        </Tooltip>
+      </li>
+    ));
+  const renderContactLinks =
+    CONTACT_LIST &&
+    CONTACT_LIST.map((i) => (
+      <p
+        key={i.id}
+        className={"text-3 mb-1 " + (darkTheme ? "text-light" : "")}
+      >
+        <span className="text-primary text-4 me-2">
+          <i className={i.iconClass} />
+        </span>
+        {i.isEmail ? <a href={`mailto:${i.text}`}>{i.text}</a> : i.text}
+      </p>
+    ));
   return (
     <section
       id="contact"
@@ -66,7 +99,7 @@ const Contact = ({ classicHeader, darkTheme }) => {
               (darkTheme ? "text-muted opacity-1" : "text-light opacity-4")
             }
           >
-            Contact
+            {CONTACT}
           </h2>
           <p
             className={
@@ -74,8 +107,7 @@ const Contact = ({ classicHeader, darkTheme }) => {
               (darkTheme ? "text-white" : "text-dark")
             }
           >
-            {" "}
-            Get in Touch
+            {GET_TOUCH}
             <span className="heading-separator-line border-bottom border-3 border-primary d-block mx-auto" />
           </p>
         </div>
@@ -88,39 +120,19 @@ const Contact = ({ classicHeader, darkTheme }) => {
                 "mb-3 text-5 text-uppercase " + (darkTheme ? "text-white" : "")
               }
             >
-              Address
+              {ADDRESS}
             </h2>
+
             <p className={"text-3 mb-4 " + (darkTheme ? "text-light" : "")}>
-              4th Floor, Plot No.22,
-              <br />
-              145 Murphy Canyon Rd.
-              <br />
-              San Diego CA 2028
+              {ADDRESS_COMPANY}
             </p>
-            <p className={"text-3 mb-1 " + (darkTheme ? "text-light" : "")}>
-              <span className="text-primary text-4 me-2">
-                <i className="fas fa-phone" />
-              </span>
-              (060) 444 434 444
-            </p>
-            <p className={"text-3 mb-1 " + (darkTheme ? "text-light" : "")}>
-              <span className="text-primary text-4 me-2">
-                <i className="fas fa-fax" />
-              </span>
-              (060) 555 545 555
-            </p>
-            <p className={"text-3 mb-4 " + (darkTheme ? "text-light" : "")}>
-              <span className="text-primary text-4 me-2">
-                <i className="fas fa-envelope" />
-              </span>
-              chat@simone.com
-            </p>
+            {renderContactLinks}
             <h2
               className={
                 "mb-3 text-5 text-uppercase " + (darkTheme ? "text-white" : "")
               }
             >
-              Follow Me
+              {FOLLOW_ME}
             </h2>
             <ul
               className={
@@ -128,61 +140,7 @@ const Contact = ({ classicHeader, darkTheme }) => {
                 (darkTheme ? "social-icons-muted" : "")
               }
             >
-              <li className="social-icons-dribbble">
-                <Tooltip text="Dribbble" placement="top">
-                  <a
-                    href="http://www.dribbble.com/harnishdesign/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fab fa-dribbble" />
-                  </a>
-                </Tooltip>
-              </li>
-              <li className="social-icons-twitter">
-                <Tooltip text="Twitter" placement="top">
-                  <a
-                    href="https://twitter.com/harnishdesign/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fab fa-twitter" />
-                  </a>
-                </Tooltip>
-              </li>
-              <li className="social-icons-facebook">
-                <Tooltip text="Facebook" placement="top">
-                  <a
-                    href="http://www.facebook.com/harnishdesign/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fab fa-facebook-f" />
-                  </a>
-                </Tooltip>
-              </li>
-              <li className="social-icons-google">
-                <Tooltip text="Google" placement="top">
-                  <a
-                    href="http://www.google.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fab fa-google" />
-                  </a>
-                </Tooltip>
-              </li>
-              <li className="social-icons-github">
-                <Tooltip text="Github" placement="top">
-                  <a
-                    href="http://www.github.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fab fa-github" />
-                  </a>
-                </Tooltip>
-              </li>
+              {renderSocialLinks}
             </ul>
           </div>
           {/* contact form */}

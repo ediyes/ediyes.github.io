@@ -15,9 +15,11 @@ export const ABOUT_P1 =
 export const ABOUT_P2 =
   "Delivering work within time and budget which meets client's requirements is our moto. Lorem Ipsum has been the industry's standard dummy text ever when an unknown printer took a galley.";
 
+export const EMAIL = "chat@simone.com";
+
 export const ABOUT_LINKS = [
   { id: "name", text: NAME, type: "text" },
-  { id: "email", text: "chat@simone.com", type: "email" },
+  { id: "email", text: EMAIL, type: "email" },
   { id: "age", text: "25", type: "text" },
   { id: "from", text: "Los Angeles, California", type: "text" },
 ];
