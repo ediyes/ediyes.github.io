@@ -1,6 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import Isotope from "isotope-layout";
 import ProjectDetailsModal from "./ProjectDetailsModal";
+import {
+  MY_WORK,
+  PORTFOLIO,
+  PROJECT_DATA,
+  PROJECT_FILTERS,
+  PROJECT_FILTERS_ALL,
+} from "../config/constants/constants.portfolio";
 const Portfolio = ({ classicHeader, darkTheme }) => {
   // init one ref to store the future isotope object
   const isotope = useRef();
@@ -223,7 +230,7 @@ const Portfolio = ({ classicHeader, darkTheme }) => {
   }, [filterKey, imagesLoaded]);
 
   const handleFilterKeyChange = (key) => () => setFilterKey(key);
-
+  console.log(PROJECT_FILTERS);
   return (
     <>
       <section
@@ -239,7 +246,7 @@ const Portfolio = ({ classicHeader, darkTheme }) => {
                 (darkTheme ? "text-muted opacity-1" : "text-light opacity-4")
               }
             >
-              Portfolio
+              {PORTFOLIO}
             </h2>
             <p
               className={
@@ -247,8 +254,7 @@ const Portfolio = ({ classicHeader, darkTheme }) => {
                 (darkTheme ? "text-white" : "text-dark")
               }
             >
-              {" "}
-              My Work
+              {MY_WORK}
               <span className="heading-separator-line border-bottom border-3 border-primary d-block mx-auto" />
             </p>
           </div>
@@ -265,10 +271,10 @@ const Portfolio = ({ classicHeader, darkTheme }) => {
                 className={"nav-link " + (filterKey === "*" ? "active" : "")}
                 onClick={handleFilterKeyChange("*")}
               >
-                All
+                {PROJECT_FILTERS_ALL}
               </button>
             </li>
-            {Object.keys(filters).map((oneKey, i) => (
+            {Object.keys(PROJECT_DATA).map((oneKey, i) => (
               <li className="nav-item" key={i}>
                 <button
                   className={
@@ -285,8 +291,8 @@ const Portfolio = ({ classicHeader, darkTheme }) => {
           {/* Filter Menu end */}
           <div className="portfolio popup-ajax-gallery">
             <div className="row portfolio-filter filter-container g-4">
-              {projectsData.length > 0 &&
-                projectsData.map((project, index) => (
+              {PROJECT_DATA.length > 0 &&
+                PROJECT_DATA.map((project, index) => (
                   <div
                     className={
                       "col-sm-6 col-lg-4 filter-item " +
@@ -318,7 +324,10 @@ const Portfolio = ({ classicHeader, darkTheme }) => {
                             <h5 className="text-white fw-400">
                               {project.title}
                             </h5>
-                            <span className="text-light">Category</span>
+                            <span className="text-light">
+                              Category <br />
+                              {project.categories.join(", ")}
+                            </span>
                           </div>
                         </div>
                       </div>
