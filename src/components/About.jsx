@@ -1,6 +1,45 @@
 import React from "react";
-import resumeFile from "../documents/resume.pdf";
+import resumeFile from "documents/resume.pdf";
+import {
+  ABOUT,
+  KNOW_MORE,
+  ABOUT_HELLO,
+  ABOUT_P1,
+  ABOUT_P2,
+  ABOUT_LINKS,
+  ABOUT_CV_TEXT,
+  ABOUT_STATS,
+} from "config/constants/constants.about";
+
 const AboutUs = ({ classicHeader, darkTheme }) => {
+  const renderLinks =
+    ABOUT_LINKS &&
+    ABOUT_LINKS.map((i) => (
+      <li key={i.id}>
+        <span className="fw-600 me-2">{i.id}:</span>
+        {i.type === "email" ? (
+          <a href={`mailto:${i.text}`}>{i.text}</a>
+        ) : (
+          i.text
+        )}
+      </li>
+    ));
+  const renderStats =
+    ABOUT_STATS &&
+    ABOUT_STATS.map((i, k) => (
+      <div className="col-6 col-md-3" key={k}>
+        <div className="featured-box text-center">
+          <h4
+            className={
+              "text-12  mb-0 " + (darkTheme ? "text-white-50" : "text-muted")
+            }
+          >
+            {i.number}
+          </h4>
+          <p className={"mb-0 " + (darkTheme ? "text-light" : "")}>{i.text}</p>
+        </div>
+      </div>
+    ));
   return (
     <section id="about" className={"section " + (darkTheme ? "bg-dark-1" : "")}>
       <div className={"container " + (classicHeader ? "" : "px-lg-5")}>
@@ -12,7 +51,7 @@ const AboutUs = ({ classicHeader, darkTheme }) => {
               (darkTheme ? "text-muted opacity-1" : "text-light opacity-4")
             }
           >
-            About Me
+            {ABOUT}
           </h2>
           <p
             className={
@@ -20,7 +59,7 @@ const AboutUs = ({ classicHeader, darkTheme }) => {
               (darkTheme ? "text-white" : "text-dark")
             }
           >
-            Know Me More
+            {KNOW_MORE}
             <span className="heading-separator-line border-bottom border-3 border-primary d-block mx-auto" />
           </p>
         </div>
@@ -33,20 +72,10 @@ const AboutUs = ({ classicHeader, darkTheme }) => {
                 "text-7 fw-600 mb-3 " + (darkTheme ? "text-white" : "")
               }
             >
-              I'm <span className="text-primary">Simone Olivia,</span> a Web
-              Developer
+              {ABOUT_HELLO}
             </h2>
-            <p className={darkTheme ? "text-white-50" : ""}>
-              I help you build brand for your business at an affordable price.
-              Thousands of clients have procured exceptional results while
-              working with our dedicated team. when an unknown printer took a
-              galley of type and scrambled it to make a type specimen book.
-            </p>
-            <p className={darkTheme ? "text-white-50" : ""}>
-              Delivering work within time and budget which meets client’s
-              requirements is our moto. Lorem Ipsum has been the industry's
-              standard dummy text ever when an unknown printer took a galley.
-            </p>
+            <p className={darkTheme ? "text-white-50" : ""}>{ABOUT_P1}</p>
+            <p className={darkTheme ? "text-white-50" : ""}>{ABOUT_P2}</p>
           </div>
           {/* About me content end */}
           {/* about me personal detials start */}
@@ -58,28 +87,17 @@ const AboutUs = ({ classicHeader, darkTheme }) => {
                   (darkTheme ? "list-style-light text-light" : "")
                 }
               >
-                <li>
-                  <span className="fw-600 me-2">Name:</span>Simone Olivia
-                </li>
-                <li>
-                  <span className="fw-600 me-2">Email:</span>
-                  <a href="mailto:chat@simone.com">chat@simone.com</a>
-                </li>
-                <li>
-                  <span className="fw-600 me-2">Age:</span>28
-                </li>
-                <li className="border-0">
-                  <span className="fw-600 me-2">From:</span>Los Angeles,
-                  California
-                </li>
+                {renderLinks}
               </ul>
-              <a
-                href={resumeFile}
-                download
-                className="btn btn-primary rounded-pill"
-              >
-                Download CV
-              </a>
+              {ABOUT_CV_TEXT && (
+                <a
+                  href={resumeFile}
+                  download
+                  className="btn btn-primary rounded-pill"
+                >
+                  {ABOUT_CV_TEXT}
+                </a>
+              )}
             </div>
           </div>
           {/* about me personal details end */}
@@ -91,68 +109,7 @@ const AboutUs = ({ classicHeader, darkTheme }) => {
             (darkTheme ? "separator-border-light" : "")
           }
         >
-          <div className="row">
-            <div className="col-6 col-md-3">
-              <div className="featured-box text-center">
-                <h4
-                  className={
-                    "text-12  mb-0 " +
-                    (darkTheme ? "text-white-50" : "text-muted")
-                  }
-                >
-                  <span>10</span>+
-                </h4>
-                <p className={"mb-0 " + (darkTheme ? "text-light" : "")}>
-                  Years Experiance
-                </p>
-              </div>
-            </div>
-            <div className="col-6 col-md-3">
-              <div className="featured-box text-center">
-                <h4
-                  className={
-                    "text-12  mb-0 " +
-                    (darkTheme ? "text-white-50" : "text-muted")
-                  }
-                >
-                  <span>250</span>+
-                </h4>
-                <p className={"mb-0 " + (darkTheme ? "text-light" : "")}>
-                  Happy Clients
-                </p>
-              </div>
-            </div>
-            <div className="col-6 col-md-3">
-              <div className="featured-box text-center">
-                <h4
-                  className={
-                    "text-12  mb-0 " +
-                    (darkTheme ? "text-white-50" : "text-muted")
-                  }
-                >
-                  <span>650</span>+
-                </h4>
-                <p className={"mb-0 " + (darkTheme ? "text-light" : "")}>
-                  Projects Done
-                </p>
-              </div>
-            </div>
-            <div className="col-6 col-md-3">
-              <div className="featured-box text-center">
-                <h4
-                  className={
-                    "text-12  mb-0 " +
-                    (darkTheme ? "text-white-50" : "text-muted")
-                  }
-                >
-                  <span>38</span>
-                </h4>
-                <p className={"mb-0 " + (darkTheme ? "text-light" : "")}>
-                  Get Awards
-                </p>
-              </div>
-            </div>
-          </div>
+          <div className="row">{renderStats}</div>
         </div>
         {/* projects rewards counting end */}
       </div>

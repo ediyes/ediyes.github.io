@@ -1,40 +1,11 @@
 import React from "react";
-
+import {
+  SERVICE,
+  SERVICE_WHATIDO,
+  SERVICES,
+} from "../config/constants/constants.service";
 const Services = ({ classicHeader, darkTheme }) => {
   // services details
-  const services = [
-    {
-      name: "Graphic Design",
-      desc: "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.",
-      icon: "fas fa-palette",
-    },
-    {
-      name: "Web Design",
-      desc: "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.",
-      icon: "fas fa-desktop",
-    },
-    {
-      name: "UI/UX Design",
-      desc: "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.",
-      icon: "fas fa-pencil-ruler",
-    },
-    {
-      name: "App Design & Develop",
-      desc: "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.",
-      icon: "fas fa-paint-brush",
-    },
-    {
-      name: "Business Analysis",
-      desc: "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.",
-      icon: "fas fa-chart-area",
-    },
-    {
-      name: "SEO Marketing",
-      desc: "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.",
-      icon: "fas fa-bullhorn",
-    },
-  ];
-
   return (
     <section
       id="services"
@@ -49,7 +20,7 @@ const Services = ({ classicHeader, darkTheme }) => {
               (darkTheme ? "text-white-50  opacity-1" : "text-light  opacity-4")
             }
           >
-            Services
+            {SERVICE}
           </h2>
           <p
             className={
@@ -57,7 +28,7 @@ const Services = ({ classicHeader, darkTheme }) => {
               (darkTheme ? "text-white" : "text-dark")
             }
           >
-            What I Do?
+            {SERVICE_WHATIDO}
             <span className="heading-separator-line border-bottom border-3 border-primary d-block mx-auto" />
           </p>
         </div>
@@ -66,8 +37,8 @@ const Services = ({ classicHeader, darkTheme }) => {
         <div className="row">
           <div className="col-lg-11 mx-auto">
             <div className="row">
-              {services.length > 0 &&
-                services.map((service, index) => (
+              {SERVICES.length > 0 &&
+                SERVICES.map((service, index) => (
                   <div className="col-md-6" key={index}>
                     <div className="featured-box style-3 mb-5">
                       <div
